@@ -1,0 +1,45 @@
+<query-editor-row query-ctrl="ctrl" can-collapse="false">
+	<div class="gf-form-inline">
+			<div class="gf-form gf-form-grow">
+				<code-editor content="ctrl.target.query"
+															on-change="ctrl.onChangeInternal()"
+															data-mode="lucene"
+															data-max-lines="200">
+				</code-editor>
+			</div>
+	</div>
+
+	<div class="gf-form">
+
+		<label class="gf-form-label query-keyword width-9">
+				Collection
+		</label>
+		<select ng-model="ctrl.target.collection_type"
+						class="gf-form-input width-9"
+						ng-options="type for type in ctrl.collection_types"
+						ng-change="ctrl.onCollectionTypeChange()">
+		</select>
+
+		<gf-form-dropdown model="ctrl.target.collection" allow-custom="true" lookup-text="true"
+											get-options="ctrl.collections"
+											on-change="ctrl.onCollectionSelect()">
+		</gf-form-dropdown>
+
+
+		<label class "gf-form-label query-keyword width-9">
+				Time Field
+		</label>
+		<gf-form-dropdown model="ctrl.target.time" allow-custom="true" lookup-text="true"
+											get-options="ctrl.fields"
+											on-change="ctrl.onChangeInternal()">
+		</gf-form-dropdown>
+
+
+		<label class "gf-form-label query-keyword width-9">
+				Max Rows
+		</label>
+		<input type="number" class="gf-form-input width-5" ng-model="ctrl.target.maxRows" spellcheck="false" placeholder="1000" ng-blur="ctrl.onChangeInternal()">
+
+	</div>
+	
+</query-editor-row>
