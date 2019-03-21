@@ -1,0 +1,2 @@
+# plug_solr
+fjfjhj
